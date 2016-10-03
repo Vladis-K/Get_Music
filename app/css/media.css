@@ -1,0 +1,11 @@
+@media only screen and (max-width: 320px) {
+  [class~=extra-small] {
+    display: none; } }
+
+@media only screen and (min-width: 321px) and (max-width: 767px) {
+  [class~=extra] {
+    display: none; } }
+
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  [class~=extra] {
+    display: none; } }
