@@ -34,32 +34,37 @@
     <div class="main">
     </div>
 
+    <div class="container searching">
+        <div class="row ">
+            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-6">
+                <form id="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="q" id="" placeholder="Find your mp3">
+                    </div>
+                    <button id="newSubmit" type="submit" class="btn btn-success">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-6">
+                <span id="videoframes"></span>
+                <button id="showElse" type="submit" class="btn showAfterSearch">Show Else</button>
+            </div>
+        </div>
+
+    </div>
+
 </header>
 
-<div class="container">
-    <div class="row ">
-        <div class="col-lg-4 col-md-6 col-sm-8 col-xs-6">
-            <form id="searchForm" class="form-inline">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="q" id="" placeholder="Find your mp3">
-                </div>
-                <button id="newSubmit" type="submit" class="btn btn-success">Search</button>
-            </form>
+
+
+<footer>
+    <div class="row">
+        <div class="col-md-12">
+            Footer
         </div>
     </div>
-</div>
-
-
-
-<div class="container">
-    <div class="row ">
-        <div class="col-lg-4 col-md-6 col-sm-8 col-xs-6">
-            <span id="videoframes"></span>
-            <button id="showElse" type="submit" class="btn btn-success showAfterSearch">Show Else</button>
-        </div>
-    </div>
-</div>
-
+</footer>
 
 
 <!-- build:js js/vendor.min.js -->
