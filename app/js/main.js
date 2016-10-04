@@ -1,13 +1,5 @@
 
-function myFunction() {
-    var x = document.getElementById("mySearch").value;
-    document.getElementById("demo").innerHTML = x;
-};
-
-
 // jQuery(document).ready(function(){
-
-
 
     function timeWell(duration){
         var min = Math.floor(duration/60);
@@ -17,12 +9,10 @@ function myFunction() {
         return timesong;
     };
 
-
     function compression(title) {
         var short = title.substr(0, 37);
         return short + '...';
     };
-
 
     $('#searchForm').on( "submit", function(event){
 
@@ -33,17 +23,14 @@ function myFunction() {
         console.log(getText);
         var access_token = "ce6578f806212552e674a43dc6865bce79aa9bde1fc087e9dfc3e6f67e0fe133552b22a47e32bcbcac3c5";
 
-        // <iframe src="//vk.com/video_ext.php?oid=-51189706&id=456240311&hash=8f75ee9011417e53&hd=3" width="300"
-        // height="200" frameborder="0" allowfullscreen></iframe>
-
-
         var getlink =  function(){
+
+            var x = $('select#mySearch').val();
+            console.log(x);
+
             var searchLink;
-            var selectVideo = $('option#audio');
 
-            console.log($('option#audio'));
-
-            if ( selectVideo) {
+            if ( x == "video" ) {
                 searchLink = "https://api.vk.com/method/video.search?sort=2&" + getText +"&access_token="
                     + access_token + "&v=V";
             }
