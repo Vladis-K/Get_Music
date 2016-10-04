@@ -9,10 +9,10 @@
         return timesong;
     };
 
-    function compression(title) {
-        var short = title.substr(0, 37);
-        return short + '...';
-    };
+    // function compression(title) {
+    //     var short = title.substr(0, 37);
+    //     return short + '...';
+    // };
 
     $('#searchForm').on( "submit", function(event){
 
@@ -34,10 +34,12 @@
                 searchLink = "https://api.vk.com/method/video.search?sort=2&" + getText +"&access_token="
                     + access_token + "&v=V";
             }
-            else  {
+            else if ( x == "audio" ) {
                 searchLink = "https://api.vk.com/method/audio.search?sort=2&" + getText
                  + "&access_token=cc53279a3101d2ea2c3fa76e33053f9ba9c08b813a3bb689adaa89871dc03b13fd238fc03b101374a214c&v=V";
             }
+            else {searchLink = "" };
+
             return searchLink;
         };
 
@@ -58,42 +60,40 @@
             success: function(data){
 
                 var catalog = data.response;
-                // var step = catalog.length;
+                var step = catalog.length;
                 var newContent = '';
 
-                var showVideo = function() {
-
-                    for (var i = 0; i<5; i++) {
+                var showinfo = function () {
+                    for (var i = 0; i < 5; i++) {
                         console.log(catalog[i]);
                         newContent += "<div class='videoCard'>";
-                        newContent += " <iframe src=' "+ catalog[i].player +"' frameborder='0' allowfullscreen></iframe>";
+                        newContent += " <iframe src=' " + catalog[i].player + "' frameborder='0' allowfullscreen></iframe>";
                         newContent += "<div>" + "<span>" + timeWell(catalog[i].duration) + "</span>";
-                        newContent += "<div class='timemovie'>" +  compression(catalog[i].title) + "</div>";
+                        newContent += "<div class='timemovie'>" + compression(catalog[i].title) + "</div>";
                         newContent += "</div>";
                     }
-
                     $('#videoframes').after(newContent);
                     $('#showElse').removeClass('showAfterSearch');
                     return false;
                 };
 
-                var showAudio = function() {
-                    for (var i = 0; i<5; i++) {
-                        console.log(catalog[i]);
-                        newContent += "<div class='videoCard'>";
-                        newContent += " <div src=' "+ catalog[i].artist +"'</div>";
-                        newContent += "<div>" + "<span>" + timeWell(catalog[i].duration) + "</span>";
-                        newContent += "<div class='timemovie'>" +  compression(catalog[i].title) + "</div>";
-                        newContent += "</div>";
-                    }
+                // var showinfo = function() {
+                //     for (var i = 1; i<6; i++) {
+                //         console.log(catalog[i]);
+                //         newContent += "<div class='videoCard'>";
+                //         newContent += " <div src=' "+ catalog[i].artist +"'</div>";
+                //         newContent += "<div>" + "<span>" + timeWell(catalog[i].duration) + "</span>";
+                //         newContent += "<div class='timemovie'>" +  catalog[i].title + "</div>";
+                //         newContent += "</div>";
+                //     }
+                //
+                //     $('#videoframes').after(newContent);
+                //     $('#showElse').removeClass('showAfterSearch');
+                //     return false;
+                // };
 
-                    $('#videoframes').after(newContent);
-                    $('#showElse').removeClass('showAfterSearch');
-                    return false;
-                };
 
-
-                // $('#newSubmit').on('click', showinfo());
+                $('#newSubmit').on( 'click', showinfo() );
 
                 // $('#showElse').on('click', function() {
                 // 	var initial = 2;
