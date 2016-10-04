@@ -1,4 +1,12 @@
-jQuery(document).ready(function(){
+
+function myFunction() {
+    var x = document.getElementById("mySearch").value;
+    document.getElementById("demo").innerHTML = x;
+};
+
+
+// jQuery(document).ready(function(){
+
 
 
     function timeWell(duration){
@@ -23,24 +31,38 @@ jQuery(document).ready(function(){
         var $textInput = $('input:text');
         var getText = $textInput.serialize();
         console.log(getText);
-        var access_token = "9df7c1ea8a5ad47721281a36563dc437e678fd9ff3bd16f1c6877c3d3b8c3eef7e036227cd5d9617fa4ef";
-
-        var searchLink = "https://api.vk.com/method/video.search?sort=2&" + getText +"&access_token="
-            + access_token + "&v=V";
-
+        var access_token = "ce6578f806212552e674a43dc6865bce79aa9bde1fc087e9dfc3e6f67e0fe133552b22a47e32bcbcac3c5";
 
         // <iframe src="//vk.com/video_ext.php?oid=-51189706&id=456240311&hash=8f75ee9011417e53&hd=3" width="300"
         // height="200" frameborder="0" allowfullscreen></iframe>
 
 
+        var getlink =  function(){
+            var searchLink;
+            var selectVideo = $('option#audio');
+
+            console.log($('option#audio'));
+
+            if ( selectVideo) {
+                searchLink = "https://api.vk.com/method/video.search?sort=2&" + getText +"&access_token="
+                    + access_token + "&v=V";
+            }
+            else  {
+                searchLink = "https://api.vk.com/method/audio.search?sort=2&" + getText
+                 + "&access_token=cc53279a3101d2ea2c3fa76e33053f9ba9c08b813a3bb689adaa89871dc03b13fd238fc03b101374a214c&v=V";
+            }
+            return searchLink;
+        };
+
+        console.log( getlink() );
+
         $.ajax({
             method: "GET",
-            url: searchLink,
+            url: getlink(),
             data: null,
             dataType: "jsonp",
             beforeSend: function(){
                 $('#videoframes').append('<div id="loading">Loading</div>');
-
             },
             complete: function() {
                 $('#loading').remove();
@@ -52,7 +74,7 @@ jQuery(document).ready(function(){
                 // var step = catalog.length;
                 var newContent = '';
 
-                var showinfo = function() {
+                var showVideo = function() {
 
                     for (var i = 0; i<5; i++) {
                         console.log(catalog[i]);
@@ -68,7 +90,23 @@ jQuery(document).ready(function(){
                     return false;
                 };
 
-                $('#newSubmit').on('click', showinfo());
+                var showAudio = function() {
+                    for (var i = 0; i<5; i++) {
+                        console.log(catalog[i]);
+                        newContent += "<div class='videoCard'>";
+                        newContent += " <div src=' "+ catalog[i].artist +"'</div>";
+                        newContent += "<div>" + "<span>" + timeWell(catalog[i].duration) + "</span>";
+                        newContent += "<div class='timemovie'>" +  compression(catalog[i].title) + "</div>";
+                        newContent += "</div>";
+                    }
+
+                    $('#videoframes').after(newContent);
+                    $('#showElse').removeClass('showAfterSearch');
+                    return false;
+                };
+
+
+                // $('#newSubmit').on('click', showinfo());
 
                 // $('#showElse').on('click', function() {
                 // 	var initial = 2;
@@ -107,4 +145,4 @@ jQuery(document).ready(function(){
         });
     });
 
-});
+// });

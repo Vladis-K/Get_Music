@@ -1,5 +1,5 @@
-$main-color: #f4f4f4
-$footer-color: #192431
+$main-color: rgba(98, 0, 234, .6)
+$search-color: rgba(68, 157, 68, .2)
 
 body
 	font-family: 'Open Sans', 'Roboto', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif
@@ -7,9 +7,8 @@ body
 	margin: 0
 	padding: 0
 
-
 header
-	background: #ffffff url("../img/header.jpg") no-repeat center top
+	//background: #ffffff url("../img/header.jpg") no-repeat center top
 	background-size: cover
 	position: relative
 	height: 950px
@@ -18,18 +17,37 @@ header
 	padding: 0
 
 .searching
+    //position: absolute
+    margin: 5px
+
+form
+    position: relative
+    margin: 0 auto
+    //left: 250px
+
+button.btn-success
+    color: #555
+    border: 1px solid #ccc
+
+button.btn
+    border-radius: 0
+    background-color: $search-color
+
+.form-control
+    border-radius: 0
+    background-color: $search-color
 
 
-
-.container
-	margin: 0
+option
+    height: 40px
+    width: 50px
 
 #videoframes
 	margin: 0
-	padding: 0
 
 .videoCard
 	margin-top: 30px
+
 .videoCard
 	iframe
 		height: auto
@@ -47,16 +65,9 @@ header
 		margin: 0
 		padding: 3px
 		font-weight: 400
-		background-color: red
+		background-color: rgba(68, 157, 68, .3)
 		height-max: 50px
 
-.btn
-	border-radius: 0
-	background-color: #6200ea
-
-.form-control
-	border-radius: 0
-	background-color: rgba(68, 157, 68, .2)
 
 #showElse
 	margin-top: 30px

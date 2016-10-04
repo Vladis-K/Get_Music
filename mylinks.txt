@@ -1,0 +1,7 @@
+Send - 
+https://oauth.vk.com/authorize?client_id=5639926&display=page&https://oauth.vk.com/blank.html&scope=video&response_type=token&v=5.53&state=123456
+
+
+Response:
+https://api.vk.com/method/video.search?q=баста&access_token=9df7c1ea8a5ad47721281a36563dc437e678fd9ff3bd16f1c6877c3d3b8c3eef7e036227cd5d9617fa4ef&v=V
+
